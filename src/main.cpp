@@ -10,7 +10,7 @@
 #include "../ImGui/backends/imgui_impl_dx11.h"
 #include "../ImGui/backends/imgui_impl_win32.h"
 
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int nCmdShow)
 {
 	Win32Application overlay{ hInstance, nCmdShow };
 	D3D11Application d3d11App{ overlay };

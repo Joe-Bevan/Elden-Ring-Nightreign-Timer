@@ -36,8 +36,8 @@ void NightreignLayer::OnUpdate(const float dt)
 		m_totalElapsedTimeInSeconds += dt;
 		m_remainingTimeTillRingChangeInSeconds -= dt;
 
-		m_totalElapsedMins = m_totalElapsedTimeInSeconds / 60u;
-		m_totalElapsedSeconds = ((uint32_t)m_totalElapsedTimeInSeconds) % 60;
+		m_totalElapsedMins = static_cast<uint8_t>(m_totalElapsedTimeInSeconds / 60.f);
+		m_totalElapsedSeconds = ((uint32_t)m_totalElapsedTimeInSeconds) % 60u;
 	}
 
 	// Update ring state
@@ -114,11 +114,13 @@ void NightreignLayer::OnRender()
 	// Draw red border if in edit mode
 	if (m_editMode)
 	{
-		ImGui::GetBackgroundDrawList()->AddRect({ 0,0 }, ImVec2(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN)), ImColor(1.0f, 0.0f, 0.0f), 0.0f, 0, 5u);
+		const float screenWidth = static_cast<float>(GetSystemMetrics(SM_CXSCREEN));
+		const float screenHeight = static_cast<float>(GetSystemMetrics(SM_CYSCREEN));
+		ImGui::GetBackgroundDrawList()->AddRect({ 0,0 }, ImVec2(screenWidth, screenHeight), ImColor(1.0f, 0.0f, 0.0f), 0.0f, 0, 5u);
 	}
 
-	const uint8_t remainingMins = m_remainingTimeTillRingChangeInSeconds / 60u;
-	const uint8_t remainingSecs = ((uint32_t)m_remainingTimeTillRingChangeInSeconds) % 60;
+	const uint8_t remainingMins = static_cast<uint8_t>(m_remainingTimeTillRingChangeInSeconds / 60.f);
+	const uint8_t remainingSecs = (static_cast<int>(m_remainingTimeTillRingChangeInSeconds)) % 60;
 
 	bool running = m_app->IsRunning();
 	ImGui::Begin("Nightreign Timer - By Joe B.", &running);
