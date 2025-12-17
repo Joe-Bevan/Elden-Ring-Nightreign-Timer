@@ -39,6 +39,9 @@ The timer will be red when the ring is closing in.
 ## Timer in edit mode (before starting a run)
 ![Timer in edit mode](https://github.com/Joe-Bevan/Elden-Ring-Nightreign-Timer/blob/main/res/EditMode.png)
 
+## Timer in game
+![Timer in game](https://github.com/Joe-Bevan/Elden-Ring-Nightreign-Timer/blob/main/res/InGame.png)
+
 ## FAQ:
 ### Why do I have to manually trigger the timer?
 Nightreign uses EAC (Easy Anti-Cheat) which is a kernel level anti-cheat (at least on windows). I don't have the time to dedicate to reverse engineering this and manually triggering the timer on expedition start.
